@@ -1,1 +1,1 @@
-'hello' 'jj' '!!!!!'
+print('hello world')
