@@ -1,7 +1,0 @@
-print('hello world')
-print('hello russia')
-print('hello hello')
-print('bye bye')
-print('hi')
-print('yo')
-print('hey')
