@@ -5,22 +5,15 @@ from selenium.webdriver.common.by import By
 
 class BasePage:
     def __init__(self, browser, base_url, timeout=10):
-        """
-        Инициализация базовой страницы.
-
-        :param browser: Веб-драйвер Selenium.
-        :param timeout: Таймаут по умолчанию для ожидания элементов (в секундах).
-        """
         self.browser = browser
-        self.timeout = timeout
         self.base_url = base_url
+        self.timeout = timeout
 
-    def open_main_page(self):
-        
+
+    def open_main_page(self):        
         self.browser.get(self.base_url)
 
     def get_locator(self, locator_tuple):
-        """Приводит кортеж в формат, используемый методами класса."""
         if locator_tuple[0] == 'xpath':
             return By.XPATH, locator_tuple[1]
         elif locator_tuple[0] in ['css', 'css selector']:
@@ -77,12 +70,6 @@ class BasePage:
             return []
 
     def click_element(self, locator, timeout=None):
-        """
-        Ожидание и клик по элементу.
-
-        :param locator: Локатор элемента, по которому нужно кликнуть.
-        :param timeout: Время ожидания элемента.
-        """
         element = self.find_element(self.get_locator(locator), timeout)
         if element:
             element.click()
