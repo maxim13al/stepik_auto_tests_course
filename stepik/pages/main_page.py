@@ -6,10 +6,14 @@ from selenium.webdriver.common.by import By
 import time
 
 class MainPage(BasePage):
-    LOCATOR = ('xpath', '//a[@id="login_link"]')
+    LOGIN_LINK = ('xpath', '//a[@id="login_link"]')
+    LOGIN_LINK_INVALID = ('css', '#login_link_invalid')
 
     
     def go_to_login_page(self):
-        self.click_element(self.LOCATOR)
+        self.click_element(self.LOGIN_LINK)
+
+    def should_be_login_link(self):
+        assert self.wait_for_element_to_be_visible(self.LOGIN_LINK)
     
 
