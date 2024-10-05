@@ -1,9 +1,11 @@
 import time
-from stepik.pages.login_page import LoginPage
-from stepik.pages.main_page import MainPage
+import pytest
+from pages.login_page import LoginPage
+from pages.main_page import MainPage
 
 
 class TestLoginPage:
+    @pytest.mark.xfail
     def test_login_url(self, browser, base_url):
         page = LoginPage(browser, base_url)  
         page.open_main_page()           

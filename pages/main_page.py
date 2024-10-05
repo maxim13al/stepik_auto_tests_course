@@ -1,5 +1,5 @@
-from stepik.pages.base_page import BasePage
-from stepik.locators.locators import MainPageLocators
+from pages.base_page import BasePage
+from locators.locators import MainPageLocators
 import time
 
 class MainPage(BasePage):

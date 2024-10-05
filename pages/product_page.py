@@ -1,5 +1,5 @@
-from stepik.pages.base_page import BasePage
-from stepik.locators.locators import ProductPageLocators
+from pages.base_page import BasePage
+from locators.locators import ProductPageLocators
 import time
 
 class ProductPage(BasePage):

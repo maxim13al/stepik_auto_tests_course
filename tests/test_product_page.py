@@ -1,6 +1,6 @@
 import time
-from stepik.pages.main_page import MainPage
-from stepik.pages.product_page import ProductPage
+from pages.main_page import MainPage
+from pages.product_page import ProductPage
 
 
 class TestProductPage:
