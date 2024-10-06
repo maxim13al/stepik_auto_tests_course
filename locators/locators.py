@@ -1,5 +1,9 @@
 from selenium.webdriver.common.by import By
 
+class BasePageLocators():
+    LOGIN_LINK = ("css", "#login_link")
+    LOGIN_LINK_INVALID = ("css", "#login_link_inc")
+
 
 class LoginPageLocators:
     ENTER_BTN = ("xpath", "//button[@name='login_submit']")

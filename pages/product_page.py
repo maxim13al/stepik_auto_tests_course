@@ -18,8 +18,10 @@ class ProductPage(BasePage):
 
 
     def should_be_product_name_in_message_match_added(self):
-        assert self.get_element_text(ProductPageLocators.NAME_PRODUCT)\
-        in self.get_element_text(ProductPageLocators.MESSAGE_PRODUCT_ADD_TO_BASKET)
+        message = self.get_element_text(ProductPageLocators.MESSAGE_PRODUCT_ADD_TO_BASKET)
+        c_message = self.get_element_text(ProductPageLocators.NAME_PRODUCT) + " has been added to your basket."
+        assert message[2:] == c_message
+ 
 
 
     def should_be_message_with_basket_value(self):
@@ -28,6 +30,15 @@ class ProductPage(BasePage):
     def shold_be_cost_basket_is_same_price_produce(self):
         assert self.get_element_text(ProductPageLocators.PRICE_PRODUCT)\
         in self.get_element_text(ProductPageLocators.MESSAGE_PRICE_BASKET)
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(ProductPageLocators.MESSAGE_PRODUCT_ADD_TO_BASKET), \
+            "Success message is presented, but should not be"
+        
+    def should_not_be_success_message_disappeared(self):
+        assert self.is_disappeared(ProductPageLocators.MESSAGE_PRODUCT_ADD_TO_BASKET), \
+            "Success message is presented, but should not be"
+    
 
 
 

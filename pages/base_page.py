@@ -3,6 +3,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 import math
+from locators.locators import BasePageLocators
 from selenium.common.exceptions import NoAlertPresentException
 
 class BasePage:
@@ -14,6 +15,15 @@ class BasePage:
 
     def open_main_page(self):        
         self.browser.get(self.base_url)
+
+ 
+    def go_to_login_page(self):
+        self.click_element(BasePageLocators.LOGIN_LINK)
+
+    def should_be_login_link(self):
+        assert self.wait_for_element_to_be_visible(BasePageLocators.LOGIN_LINK)
+
+    
 
     def get_locator(self, locator_tuple):
         if locator_tuple[0].lower() == 'xpath':
@@ -153,6 +163,27 @@ class BasePage:
             )
         except TimeoutException:
             print(f"Элемент с локатором {locator} не исчез за {timeout} секунд.")
+
+    def is_not_element_present(self, locator, timeout=10):
+        timeout = timeout or self.timeout
+        try:
+            WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located(self.get_locator(locator))
+            )
+        except TimeoutException:
+            return True
+
+        return False
+    
+    def is_disappeared(self, locator, timeout=10):
+        timeout = timeout or self.timeout
+        try:
+            WebDriverWait(self.browser, timeout,1,  TimeoutException).\
+                until_not(EC.presence_of_element_located(self.get_locator(locator))
+                          )
+        except TimeoutException:
+            return False
+
+        return True
 
     def get_current_url(self):
         """

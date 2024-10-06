@@ -24,6 +24,3 @@ class TestLoginPage:
         main_page.open_main_page()
         main_page.go_to_login_page()
         login_page.should_be_register_form()
-
-
-        

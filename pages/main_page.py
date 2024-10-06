@@ -3,11 +3,7 @@ from locators.locators import MainPageLocators
 import time
 
 class MainPage(BasePage):
-    
-    def go_to_login_page(self):
-        self.click_element(MainPageLocators.LOGIN_LINK)
-
-    def should_be_login_link(self):
-        assert self.wait_for_element_to_be_visible(MainPageLocators.LOGIN_LINK)
+    def __init__(self, *args, **kwargs):
+        super(MainPage, self).__init__(*args, **kwargs)
     
 
