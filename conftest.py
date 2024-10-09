@@ -7,7 +7,7 @@ def pytest_addoption(parser):
                      help="Choose browser: chrome or firefox")
     parser.addoption('--language', action='store', default='en',
                      help="Choose language: e.g. en, ru, fr")
-    parser.addoption('--base_url', action='store', default="http://selenium1py.pythonanywhere.com/",
+    parser.addoption('--base_url', action='store', default="https://selenium1py.pythonanywhere.com/",
                      help="Choose base url: e.g. http://selenium1py.pythonanywhere.com/")      
 
 @pytest.fixture
